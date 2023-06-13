@@ -1,5 +1,8 @@
 """
-Write a function called same, which accepts two arrays. 
+This pattern uses objects or sets to collect values/frequencies of values
+This can often avoid the need for nested loops or O(N^2) operations with arrays / strings
+
+Example:Write a function called same, which accepts two arrays. 
 The function should return true if every value in the array has it's corresponding value squared in the second array. 
 The frequency of values must be the same
 """
@@ -7,6 +10,8 @@ The frequency of values must be the same
 
 # naive implementation
 def same_naive(ls1:list, ls2:list):
+
+    """ Time Complexity -O(N^2)"""
 
     assert (isinstance(ls1, list) and isinstance(ls2, list)), "the arguements has to be lists"
                 
@@ -20,6 +25,8 @@ def same_naive(ls1:list, ls2:list):
 
 
 def same_better(ls1:list, ls2:list):
+
+    """Time Complexity - O(n)"""
     assert (isinstance(ls1, list) and isinstance(ls2, list)), "the arguements has to be lists"
     
     if len(ls1) != len(ls2):
@@ -115,6 +122,8 @@ validAnagram('texttwisttime', 'timetwisttext') // true
 def validAnagramNaive(str1:str, str2:str):
     assert (isinstance(str1, str) and isinstance(str2, str)), "the arguements has to be strings" 
     # assert str1 != str2, "the string  has to be different"
+    if len(str1) != len(str2):
+        return False
     str2 = list(str2)
     for char in str1:
         if char in str2:
