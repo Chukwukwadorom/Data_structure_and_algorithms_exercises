@@ -69,12 +69,56 @@ Space - O(n)
 def are_there_duplicates(*arg):
     if len(arg) == 0:
         return False
+    freq_dict = {}
+    for item in arg:
+        if freq_dict.get(item, None):
+            return True 
+        else:
+            freq_dict[item] = 1
 
-    left_pointer = 0
-    right_pointer = 1
+    return False
 
     
     
+print(are_there_duplicates(1, 2, 3)) 
+print(are_there_duplicates(1, 2, 2)) 
+print(are_there_duplicates('a', 'b', 'c', 'a'))  
+
+def are_there_duplicates_mp(*arg):
+    """using multiple pointers"""
+    arg_list = list(arg)
+    arg_list.sort()
+
+    first_pointer = 0
+    second_pointer = 1
+
+    while second_pointer != len(arg_list):
+        if arg_list[second_pointer] != arg_list[first_pointer]:
+            ## arg_list[second_pointer] == arg_list[first_pointer] return true will work!
+            first_pointer += 1
+            arg_list[first_pointer] = arg_list[second_pointer]
+        
+        second_pointer +=1
+
+    if (first_pointer + 1) != len(arg_list):
+        return True
+    else:
+        return False
+
+print("\n")
+
+print(are_there_duplicates_mp(1, 2, 3)) 
+print(are_there_duplicates_mp(1, 2, 2)) 
+print(are_there_duplicates_mp('a', 'b', 'c', 'a')) 
 
 
+def are_there_duplicates_lf(*arg):
+    """linear function"""
+    return len(set(arg)) != len(arg)
 
+
+print("\n")
+
+print(are_there_duplicates_lf(1, 2, 3)) 
+print(are_there_duplicates_lf(1, 2, 2)) 
+print(are_there_duplicates_lf('a', 'b', 'c', 'a')) 
