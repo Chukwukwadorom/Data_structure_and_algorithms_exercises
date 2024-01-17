@@ -93,6 +93,7 @@ Recall that the Fibonacci sequence is the sequence of whole numbers 1, 1, 2, 3, 
 print(".........................................Fibonacci.......................................................")
 
 def fib(n):
+    #  buggy
     lst  = [1,1]
 
     def helper(n):
@@ -112,6 +113,7 @@ print(fib(4))
 print(fib(10))
 print(fib(28))
 print(fib(35))
+print(fib(1))
 
 
 print(".........................................Fibonacci b....................................................")
